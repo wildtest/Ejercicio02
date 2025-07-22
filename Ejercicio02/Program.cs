@@ -10,6 +10,9 @@ namespace Ejercicio02
 {
 	internal class Program
 	{
+		/// <summary>
+		/// Clase base Usuario que contiene propiedades comunes para Paciente, Doctor y Enfermera.
+		/// </summary>
 		public abstract class Usuario
 		{
 			public int Id { get; set; }
@@ -21,6 +24,10 @@ namespace Ejercicio02
 				Console.WriteLine($"Id: {Id}, Nombre: {Nombre}, DNI: {DNI}");
 			}
 		}
+
+		/// <summary>
+		/// Clase Paciente que hereda de Usuario y contiene propiedades específicas como NroHistoria y una lista de Citas Médicas.
+		/// </summary>
 		public class Paciente : Usuario
 		{
 			private int NroHistoria { get; set; }
@@ -49,6 +56,9 @@ namespace Ejercicio02
 
 		}
 
+		/// <summary>
+		/// Clase Hospital que contiene propiedades como Código, Nombre y listas de Especialidades, Pacientes, Doctores y Enfermeras.
+		/// </summary>
 		public class Hospital
 		{
 			public string Codigo { get; set; }
@@ -81,6 +91,9 @@ namespace Ejercicio02
 			}
 		}
 
+		/// <summary>
+		/// Clase CitaMedica que representa una cita médica con propiedades como Especialidad, Doctor, Horario, Hospital y Paciente.
+		/// </summary>
 		public class CitaMedica
 		{
 			public Especialidad Especialidad { get; set; }
@@ -114,6 +127,9 @@ namespace Ejercicio02
 			}
 		}
 
+		/// <summary>
+		/// Clase Doctor que hereda de Usuario y contiene una propiedad Especialidad.
+		/// </summary>
 		public class Doctor : Usuario
 		{
 			public Especialidad Especialidad { get; set; }
@@ -139,6 +155,9 @@ namespace Ejercicio02
 			}
 		}
 
+		/// <summary>
+		/// Clase Enfermera que hereda de Usuario y contiene propiedades como NumeroLicencia, Turno y Especialidad.
+		/// </summary>
 		public class Enfermera : Usuario
 		{
 			public string NumeroLicencia { get; set; }
@@ -167,6 +186,10 @@ namespace Ejercicio02
 			}
 		}
 
+
+		/// <summary>
+		/// Clase Especialidad que representa una especialidad médica con propiedades como Id y Nombre.
+		/// </summary>
 		public class Especialidad
 		{
 			public int Id { get; set; }
@@ -318,6 +341,10 @@ namespace Ejercicio02
 			
 		}
 
+		/// <summary>
+		/// Permite registrar un nuevo paciente en el sistema y lo agrega a la lista de pacientes, recibe el parámetro pacientes que es una lista de objetos Paciente.
+		/// </summary>
+		/// <param name="pacientes"></param>
 		public static void RegistrarPaciente(List<Paciente> pacientes)
 		{
 			Console.WriteLine("Ingrese Datos de Paciente");
@@ -334,6 +361,11 @@ namespace Ejercicio02
 
 		}
 
+		/// <summary>
+		/// Permite registrar un nuevo doctor en el sistema, recibe el parámetro doctores que es una lista de objetos Doctor y especialidades que es una lista de objetos Especialidad.
+		/// </summary>
+		/// <param name="doctores"></param>
+		/// <param name="especialidades"></param>
 		public static void RegistrarDoctor(List<Doctor> doctores, List<Especialidad> especialidades)
 		{
 			Console.WriteLine("Ingrese Datos del Doctor");
@@ -362,6 +394,11 @@ namespace Ejercicio02
 			
 		}
 
+		/// <summary>
+		/// Permite registrar una nueva enfermera en el sistema, recibe el parámetro enfermeras que es una lista de objetos Enfermera y especialidades que es una lista de objetos Especialidad.
+		/// </summary>
+		/// <param name="enfermeras"></param>
+		/// <param name="especialidades"></param>
 		public static void RegistrarEnfermera(List<Enfermera> enfermeras, List<Especialidad> especialidades)
 		{
 			Console.WriteLine("Ingrese Datos de Enfermera");
@@ -394,6 +431,14 @@ namespace Ejercicio02
 
 		}
 
+		/// <summary>
+		/// Permite registrar una nueva cita médica en el sistema, recibe los parámetros citasMedicas, hospitales, especialidades, doctores y pacientes que son listas de objetos correspondientes.
+		/// </summary>
+		/// <param name="citasMedicas"></param>
+		/// <param name="hospitales"></param>
+		/// <param name="especialidades"></param>
+		/// <param name="doctores"></param>
+		/// <param name="pacientes"></param>
 		public static void RegistrarCitaMedica(List<CitaMedica> citasMedicas, List<Hospital> hospitales, List<Especialidad> especialidades, List<Doctor> doctores, List<Paciente> pacientes)
 		{
 			Console.WriteLine("Ingrese Datos de Cita Médica");
@@ -487,6 +532,11 @@ namespace Ejercicio02
 			
 		}
 
+
+		/// <summary>
+		/// Permite mostrar las citas médicas registradas en el sistema, recibe el parámetro citasMedicas que es una lista de objetos CitaMedica.
+		/// </summary>
+		/// <param name="citasMedicas"></param>
 		public static void MostrarCitasMedicas(List<CitaMedica> citasMedicas)
 		{
 			Console.WriteLine("\nMOSTRAR CITAS MÉDICAS");
@@ -510,6 +560,11 @@ namespace Ejercicio02
 			Console.Write("\n");
 		}
 
+
+		/// <summary>
+		/// Permite mostrar los doctores registrados en un hospital específico, recibe el parámetro hospitales que es una lista de objetos Hospital.
+		/// </summary>
+		/// <param name="hospitales"></param>
 		public static void MostrarDoctores(List<Hospital> hospitales)
 		{
 			Console.WriteLine("Mostrar Doctores");
@@ -531,6 +586,11 @@ namespace Ejercicio02
 
 		}
 
+
+		/// <summary>
+		/// Permite mostrar las enfermeras registradas en un hospital específico, recibe el parámetro hospitales que es una lista de objetos Hospital.
+		/// </summary>
+		/// <param name="hospitales"></param>
 		public static void MostrarEnfermeras(List<Hospital> hospitales)
 		{
 			Console.WriteLine("Mostrar Enfermeras");
@@ -551,6 +611,11 @@ namespace Ejercicio02
 			}
 		}
 
+
+		/// <summary>
+		/// Permite mostrar las especialidades registradas en un hospital específico, recibe el parámetro hospitales que es una lista de objetos Hospital.
+		/// </summary>
+		/// <param name="hospitales"></param>
 		public static void MostrarEspecialidades(List<Hospital> hospitales)
 		{
 			Console.WriteLine("Mostrar Especialidades");
@@ -571,6 +636,11 @@ namespace Ejercicio02
 			}
 		}
 
+
+		/// <summary>
+		/// Permite mostrar los hospitales registrados en el sistema, recibe el parámetro hospitales que es una lista de objetos Hospital.
+		/// </summary>
+		/// <param name="hospitales"></param>
 		public static void MostrarHospitales(List<Hospital> hospitales)
 		{
 			Console.WriteLine("Mostrar Hospitales");
